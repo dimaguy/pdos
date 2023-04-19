@@ -4,5 +4,5 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: cmd.exe -/c "tree"
+      - uses: actions/checkout@v3
+      - run: cmd.exe -/c "./build.bat"
