@@ -5,7 +5,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - run: Invoke-WebRequest -Uri "https://web.archive.org/web/20060114221019/http://community.borland.com/article/images/21751/tcpp101.zip" -OutFile "tcpp101.zip"
+      - run: Invoke-WebRequest -Uri "https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip" -OutFile "tcpp101.zip"
       - run: choco install 7zip.portable
       - run: cmd.exe -/c "7z x tcpp101.zip"
       - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP"
