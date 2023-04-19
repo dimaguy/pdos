@@ -10,4 +10,4 @@ jobs:
       - run: choco install 7zip.portable
       - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP -otcpp101\tcc" 
       - run: $env:Path = (get-location).path + '\tcpp101\tcc;' + $env:Path
-      - run: cmd.exe -/c "set PATH=%PATH%;%cd%\tcpp101\tcc & build.bat"
+      - run: cmd.exe -/c "set PATH=%PATH%;%cd%\tcpp101\tcc && tree && echo %PATH% && build.bat"
