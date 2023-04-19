@@ -4,4 +4,4 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: ./build.bat
+      - run: cmd.exe -/c ".\build.bat"
