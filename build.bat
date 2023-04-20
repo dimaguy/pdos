@@ -6,6 +6,7 @@ rem boot images that comprise the executable distribution of pdos
 
 set drive=a
 set loc=%cd%\devel\pdos\src
+set PATH=%PATH%;%cd%\tcpp101\tcc
 
 cd pdpclib
 del *.obj
