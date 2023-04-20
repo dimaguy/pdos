@@ -23,4 +23,5 @@ jobs:
       - run: sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
       - run: sudo apt install --install-recommends winehq-stable tree dosbox
       - run: tree
+      - run: export SDL_VIDEODRIVER=dummy
       - run: wine cmd.exe /c "build.bat"
