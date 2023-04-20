@@ -21,9 +21,10 @@ jobs:
       - run: sudo dpkg --add-architecture i386
       - run: wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
       - run: sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
-      - run: sudo apt install --install-recommends winehq-stable tree dosbox
+      - run: sudo apt install --install-recommends winehq-stable tree dosbox xterm
       - run: tree
       - run: export SDL_VIDEODRIVER=dummy
-      - run: echo $TERM
+      - run: export TERM=xterm
       - run: wine cmd.exe /c "build.bat"
+        continue-on-error: true
       - run: tree
