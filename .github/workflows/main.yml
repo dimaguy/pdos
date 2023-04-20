@@ -1,20 +1,24 @@
 name: Build on Windows
 on: push
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: Invoke-WebRequest -Uri "https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip" -OutFile "tcpp101.zip"
-      - run: Expand-Archive -Path "tcpp101.zip" -DestinationPath "tcpp101"
-      - run: choco install 7zip.portable
-      - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP -otcpp101\tcc" 
-      - run: Invoke-WebRequest -Uri https://github.com/otya128/winevdm/releases/download/v0.8.0/otvdm-v0.8.1.zip  -OutFile "otvdm.zip"
-      - run: Expand-Archive -Path "otvdm.zip" -DestinationPath "otvdm"
+  #build:
+  #  runs-on: windows-latest
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #    - run: Invoke-WebRequest -Uri "https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip" -OutFile "tcpp101.zip"
+  #    - run: Expand-Archive -Path "tcpp101.zip" -DestinationPath "tcpp101"
+  #    - run: choco install 7zip.portable
+  #    - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP -otcpp101\tcc" 
+  #    - run: Invoke-WebRequest -Uri https://github.com/otya128/winevdm/releases/download/v0.8.0/otvdm-v0.8.1.zip  -OutFile "otvdm.zip"
+  #    - run: Expand-Archive -Path "otvdm.zip" -DestinationPath "otvdm"
   build2:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/checkout@v3
+      - run: wget https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip -o tcpp101.zip
+      - run: mkdir tcpp101 && unzip tcpp101.zip -d tcpp101
+      - run: mkdir tcpp101/tcc && unzip tcpp101/TCC.ZIP -d tcpp101/tcc
       - run: sudo dpkg --add-architecture i386
       - run: wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
       - run: sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
