@@ -1,1 +1,1 @@
-otvdm tcc patchver.c
+otvdmw tcc patchver.c
