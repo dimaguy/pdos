@@ -24,5 +24,6 @@ jobs:
       - run: sudo apt install --install-recommends winehq-stable tree dosbox
       - run: tree
       - run: export SDL_VIDEODRIVER=dummy
-      - run: export TERM="xterm"
+      - run: echo $TERM
       - run: wine cmd.exe /c "build.bat"
+      - run: tree
