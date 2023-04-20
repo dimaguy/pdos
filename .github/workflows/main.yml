@@ -9,5 +9,7 @@ jobs:
       - run: Expand-Archive -Path "tcpp101.zip" -DestinationPath "tcpp101"
       - run: choco install 7zip.portable
       - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP -otcpp101\tcc" 
-      - run: $env:Path = (get-location).path + '\tcpp101\tcc;' + $env:Path
+      - run: Invoke-WebRequest -Uri https://github.com/otya128/winevdm/releases/download/v0.8.0/otvdm-v0.8.1.zip  -OutFile "otvdm.zip"
+      - run: Expand-Archive -Path "otvdm.zip" -DestinationPath "otvdm"
+      - run: pnputil -i -a otvdm\install.inf
       - run: cmd.exe -/c "tree && echo %cd% && echo %PATH% && build.bat"
