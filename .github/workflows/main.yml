@@ -11,5 +11,5 @@ jobs:
       - run: cmd.exe -/c "7z x tcpp101\TCC.ZIP -otcpp101\tcc" 
       - run: Invoke-WebRequest -Uri https://github.com/otya128/winevdm/releases/download/v0.8.0/otvdm-v0.8.1.zip  -OutFile "otvdm.zip"
       - run: Expand-Archive -Path "otvdm.zip" -DestinationPath "otvdm"
-      - run: crundll32.exe advpack.dll,LaunchINFSectionEx install.inf,DefaultInstall.ntamd4,%cd%\otvdm\install.inf
+      - run: rundll32.exe advpack.dll,LaunchINFSectionEx install.inf,DefaultInstall.ntamd4,%cd%\otvdm\install.inf
       - run: cmd.exe -/c "tree && echo %cd% && echo %PATH% && build.bat"
