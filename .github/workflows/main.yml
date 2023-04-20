@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: wget https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip -o tcpp101.zip
+      - run: wget https://web.archive.org/web/20060114221019if_/http://community.borland.com:80/article/images/21751/tcpp101.zip -O tcpp101.zip
       - run: mkdir tcpp101 && unzip tcpp101.zip -d tcpp101
       - run: mkdir tcpp101/tcc && unzip tcpp101/TCC.ZIP -d tcpp101/tcc
       - run: sudo dpkg --add-architecture i386
