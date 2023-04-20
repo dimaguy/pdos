@@ -12,3 +12,12 @@ jobs:
       - run: Invoke-WebRequest -Uri https://github.com/otya128/winevdm/releases/download/v0.8.0/otvdm-v0.8.1.zip  -OutFile "otvdm.zip"
       - run: Expand-Archive -Path "otvdm.zip" -DestinationPath "otvdm"
       - run: cmd.exe -/c "tree && echo %cd% && echo %PATH% && build.bat"
+  build2:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: sudo dpkg --add-architecture i386
+      - run: wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+      - run: sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
+      - run: sudo apt install --install-recommends winehq-stable
+      - run: wine cmd.exe /c "build.bat"
