@@ -21,6 +21,6 @@ jobs:
       - run: sudo dpkg --add-architecture i386
       - run: wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
       - run: sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
-      - run: sudo apt install --install-recommends winehq-stable tree
+      - run: sudo apt install --install-recommends winehq-stable tree dosbox
       - run: tree
       - run: wine cmd.exe /c "build.bat"
